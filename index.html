@@ -4,39 +4,22 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Music Stop Watch</title>
-  <link rel="stylesheet" href="css/main.css">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="css/home.css">
 </head>
 
 <body>
-  <h1>Countdown Clock</h1>
-  <div id="clockdiv">
-    <div>
-      <span class="hours"></span>
-      <div class="smalltext">Hours</div>
-    </div>
-    <div>
-      <span class="minutes"></span>
-      <div class="smalltext">Minutes</div>
-    </div>
-    <div>
-      <span class="seconds"></span>
-      <div class="smalltext">Seconds</div>
-    </div>
+   <h1>Music Stop Watch</h1>
+
+
+  <br>
+  <div class="homeButtons">
+    <a class="btn" href="#">Quick Start</a>
+    <a class="btn" href="customize.html">Customize</a>
+    <a class="btn" href="#">Favorites</a>
   </div>
 
-  <br> <br>
-  <div class="timer">
-    <input type="number" id="hourInput" placeholder="Hour">
-    <input type="number" id="minInput" placeholder="Minute">
-    <input type="number" id="secInput" placeholder="Seconds">
-    <input type="button" value="Submit" onclick="settimer();">
-  </div>
-  <div>
-    <button id="start" class="btn">Start</button>
-    <button id="stop" class="btn">Stop</button>
-    <button id="clear" class="btn">Clear</button>
-  </div>
+
   <script defer src="js/main.js" charset="utf-8"></script>
 
 </html>

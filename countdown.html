@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Countdown</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <h1>Countdown Clock</h1>
+  <div id="clockdiv">
+    <div>
+      <span class="hours"></span>
+      <div class="smalltext">Hours</div>
+    </div>
+    <div>
+      <span class="minutes"></span>
+      <div class="smalltext">Minutes</div>
+    </div>
+    <div>
+      <span class="seconds"></span>
+      <div class="smalltext">Seconds</div>
+    </div>
+  </div>
+
+  <br> <br>
+  <div>
+    <button id="start" class="btn" onclick="settimer()">Start</button>
+    <button id="stop" class="btn">Stop</button>
+    <button id="clear" class="btn">Clear</button>
+  </div>
+  <script defer src="js/countdown.js" charset="utf-8"></script>
+
+</html>
