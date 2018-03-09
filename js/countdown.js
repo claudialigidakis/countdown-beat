@@ -22,15 +22,16 @@
     document.querySelector(".seconds").innerHTML = 0;
   }
 
-
-
   if (timeObj['genre'] === 'finalCountdown') {
     document.querySelector('#tracks').src = "music.mp3/finalCountdown.mp3"
   }
 
   if (timeObj['genre'] === 'teamWork') {
-    console.log('teamwork')
     document.querySelector('#tracks').src = "music.mp3/teamWork.mp3"
+  }
+
+  if (timeObj['genre'] === 'dragonForce') {
+    document.querySelector('#tracks').src = "music.mp3/dragonForce.mp3"
   }
 
 })();
