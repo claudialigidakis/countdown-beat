@@ -7,20 +7,23 @@
   if (timeObj['h'] && 0 <= timeObj['h'] && timeObj['h'] <= 3) {
     document.querySelector(".hours").innerHTML = timeObj.h;
   } else {
-    document.querySelector(".hours").innerHTML = 00;
+    document.querySelector(".hours").innerHTML = 0;
   }
 
   if (timeObj['m'] && 0 <= timeObj['m'] && timeObj['m'] <= 60) {
     document.querySelector(".minutes").innerHTML = timeObj.m;
   } else {
-    document.querySelector(".minutes").innerHTML = 00;
+    document.querySelector(".minutes").innerHTML = 0;
   }
 
   if (timeObj['s'] && 0 <= timeObj['s'] && timeObj['s'] <= 60) {
     document.querySelector(".seconds").innerHTML = timeObj.s;
   } else {
-    document.querySelector(".seconds").innerHTML = 00;
+    document.querySelector(".seconds").innerHTML = 0;
   }
+
+
+
   if (timeObj['genre'] === 'finalCountdown') {
     document.querySelector('#tracks').src = "music.mp3/finalCountdown.mp3"
   }
@@ -31,6 +34,7 @@
   }
 
 })();
+
 var timer;
 
 function settimer() {
@@ -39,11 +43,13 @@ function settimer() {
   let input_min = parseInt(document.querySelector(".minutes").innerHTML);
   let input_sec = parseInt(document.querySelector(".seconds").innerHTML);
   let startAudio = document.querySelector('#tracks')
-
-  if (startAudio.currentTime <= 0 && document.querySelector(".seconds").innerHTML > 0) {
+console.log(document.querySelector('#tracks').src)
+console.log(startAudio.currentTime)
+console.log(document.querySelector(".seconds").innerHTML)
+  if (startAudio.currentTime === 0 && document.querySelector(".seconds").innerHTML > 0 || document.querySelector(".minutes").innerHTML > 0 || document.querySelector(".hours").innerHTML > 0) {
     startAudio.play()
     startAudio.currentTime = 45
-  } else if (startAudio.currentTime > 0) {
+  } else if (startAudio.currentTime > 0 && document.querySelector(".seconds").innerHTML > 0 || document.querySelector(".minutes").innerHTML > 0 || document.querySelector(".hours").innerHTML > 0) {
     startAudio.play()
   }
 
@@ -78,6 +84,11 @@ function settimer() {
 
 let stop = document.querySelector('#stop');
 let clear = document.querySelector('#clear');
+let reset = document.querySelector('#reset');
+
+reset.addEventListener("click", function(event) {
+location.reload();
+})
 
 stop.addEventListener("click", function(event) {
   console.log('stop')
