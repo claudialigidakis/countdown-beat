@@ -7,6 +7,17 @@ function goToCountdown(){
   if (input_min == "") input_min = 0;
   let input_sec = parseInt(document.querySelector("#secInput").value);
   if (input_sec == "") input_sec = 0;
-
-  window.location = `/countdown.html?h=${input_hour}&m=${input_min}&s=${input_sec}`
+  let genrePicked = document.querySelector('#genres').value
+  //
+  // if (document.querySelector('#genres').value === finalCountdown) {
+  //   document.querySelector('#tracks').src = audio.mp3/finalCountdown.mp3
+  // }
+  //
+  // if (document.querySelector('#genres').value === teamWork) {
+  //   document.querySelector('#tracks').src = audio.mp3/teamWork.mp3
+  // }
+  window.location = `/countdown.html?h=${input_hour}&m=${input_min}&s=${input_sec}&genre=${genrePicked}`
 }
+
+let genrePicked = document.querySelector('#genres').value
+console.log(genrePicked)

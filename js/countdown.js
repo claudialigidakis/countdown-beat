@@ -21,7 +21,14 @@
   } else {
     document.querySelector(".seconds").innerHTML = 00;
   }
+  if (timeObj['genre'] === 'finalCountdown') {
+    document.querySelector('#tracks').src = "music.mp3/finalCountdown.mp3"
+  }
 
+  if (timeObj['genre'] === 'teamWork') {
+    console.log('teamwork')
+    document.querySelector('#tracks').src = "music.mp3/teamWork.mp3"
+  }
 
 })();
 var timer;
@@ -32,10 +39,14 @@ function settimer() {
   let input_min = parseInt(document.querySelector(".minutes").innerHTML);
   let input_sec = parseInt(document.querySelector(".seconds").innerHTML);
   let startAudio = document.querySelector('#tracks')
-  if (document.querySelector(".seconds").innerHTML > 0) {
+
+  if (startAudio.currentTime <= 0 && document.querySelector(".seconds").innerHTML > 0) {
     startAudio.play()
-    startAudio.currentTime = 120
+    startAudio.currentTime = 45
+  } else if (startAudio.currentTime > 0) {
+    startAudio.play()
   }
+
 
   let input_time = (3600 * input_hour + 60 * input_min + input_sec) * 1000
   let nowTime = new Date().getTime(); // Get Current date time
@@ -45,7 +56,6 @@ function settimer() {
   let hour = minute * 60; // Total Min In One Hour
 
   function showtimer() {
-    console.log('startshow')
     var remainTime = endTime - new Date().getTime() // Get The Difference Between Current and entered date time
     if (remainTime < 0) {
       document.querySelector('#tracks').pause();
@@ -78,8 +88,8 @@ stop.addEventListener("click", function(event) {
 
 clear.addEventListener("click", function(event) {
   document.querySelector('#tracks').pause();
-  timer = null;
   clearInterval(timer);
+  timer = null;
   document.querySelector(".hours").innerHTML = 0;
   document.querySelector(".minutes").innerHTML = 0;
   document.querySelector(".seconds").innerHTML = 0;
