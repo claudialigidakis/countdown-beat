@@ -7,16 +7,9 @@ body{
 
 h1{
   color: white;
-  font-weight: 100;
-  font-size: 40px;
+  font-weight: 10px;
+  font-size: 50px;
   margin: 40px 0px 20px;
-}
-
-.homeButtons {
-  display: block;
-  font-size: 1rem;
-  margin: 1rem auto;
-  padding: 1rem;
 }
 
 .btn {
