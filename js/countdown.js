@@ -4,7 +4,6 @@
     acc[ele[0]] = ele[1]
     return acc
   }, {})
-  console.log(timeObj.h)
   if (timeObj['h'] && 0 <= timeObj['h'] && timeObj['h'] <= 3) {
     document.querySelector(".hours").innerHTML = timeObj.h;
   } else {
@@ -30,7 +29,9 @@ function settimer() {
   let input_hour = parseInt(document.querySelector(".hours").innerHTML);
   let input_min = parseInt(document.querySelector(".minutes").innerHTML);
   let input_sec = parseInt(document.querySelector(".seconds").innerHTML);
-
+  let startAudio = document.querySelector('#tracks')
+  startAudio.play()
+  startAudio.currentTime = 60
 
 
   let input_time = (3600 * input_hour + 60 * input_min + input_sec) * 1000
@@ -40,10 +41,10 @@ function settimer() {
   let minute = second * 60; // Total Sec In One Min
   let hour = minute * 60; // Total Min In One Hour
 
-
   function showtimer() {
     var remainTime = endTime - new Date().getTime() // Get The Difference Between Current and entered date time
     if (remainTime < 0) {
+      document.querySelector('#tracks').pause();
       clearInterval(timer);
       return;
     }
@@ -65,6 +66,7 @@ let stop = document.querySelector('#stop');
 let clear = document.querySelector('#clear');
 
 stop.addEventListener("click", function(event) {
+  document.querySelector('#tracks').pause();
   clearInterval(timer);
   timer = null;
 })
