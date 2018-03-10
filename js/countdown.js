@@ -22,6 +22,27 @@
     document.querySelector(".seconds").innerHTML = 0;
   }
 
+  let musicSrc = ['music.mp3/dragonForce.mp3', 'music.mp3/finalCountdown.mp3', 'music.mp3/teamWork.mp3']
+  function shuffle(Src) {
+    var currentIndex = Src.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = Src[currentIndex];
+      Src[currentIndex] = Src[randomIndex];
+      Src[randomIndex] = temporaryValue;
+    }
+    return Src;
+  }
+
+
+  if (timeObj['genre'] === 'random') {
+    shuffle(musicSrc)
+    console.log(musicSrc)
+    document.querySelector('#tracks').src = musicSrc[0]
+  }
+
+
   if (timeObj['genre'] === 'finalCountdown') {
     document.querySelector('#tracks').src = "music.mp3/finalCountdown.mp3"
   }

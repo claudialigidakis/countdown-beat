@@ -1,6 +1,6 @@
 let timer;
 
-function goToCountdown(){
+function goToCountdown() {
   let input_hour = parseInt(document.querySelector("#hourInput").value);
   if (input_hour == "") input_hour = 0;
   let input_min = parseInt(document.querySelector("#minInput").value);
