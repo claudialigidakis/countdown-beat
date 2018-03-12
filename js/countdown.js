@@ -141,12 +141,10 @@ function highlight() {
 function verifyFav(newSong, songArray) {
   for (let i = 0; i < songArray.length; i++) {
     if (compareObj(newSong, songArray[i])) {
-      return "song not added"
+      return alert ("Song already added to favorites")
     }
   }
-  highlight()
   return songArray.push(newSong)
-
 }
 
 
@@ -157,7 +155,6 @@ let favTimeMins = document.querySelector(".minutes").innerHTML
 let favTimeSec = document.querySelector(".seconds").innerHTML
 
 favorite.addEventListener("click", function(event) {
-
   let localList = localStorage.getItem('favorites')
   let songs = JSON.parse(localList)
   if (songs == null) {
@@ -172,11 +169,11 @@ favorite.addEventListener("click", function(event) {
 
   sLength = songs.length
 
-
   if (sLength === 0) {
     highlight()
     songs.push(song)
   } else if (sLength > 0) {
+    highlight()
     verifyFav(song, songs);
   }
 
