@@ -1,0 +1,54 @@
+body{
+	text-align: center;
+	background: #ff6666;
+  font-family: sans-serif;
+  font-weight: 100;
+}
+
+h1{
+  font-size: 60px;
+  color: white;
+}
+
+#newBtn {
+    background-color: lightgrey;
+    /*display: block;*/
+    border: white solid;
+    color: white;
+    padding: 15px 32px;
+    margin: 10px;
+    font-size: 25px;
+    width: 800px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#newBtn:hover {
+  color: red;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#newBtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#newBtn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+#newBtn:hover span {
+  padding-right: 25px;
+}
+
+
+#newBtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
