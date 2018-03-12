@@ -10,7 +10,7 @@ h1{
   color: white;
 }
 
-#newBtn {
+.button {
     background-color: lightgrey;
     /*display: block;*/
     border: white solid;
@@ -23,7 +23,7 @@ h1{
     cursor: pointer;
 }
 
-#newBtn:hover {
+.button:hover {
   color: red;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }

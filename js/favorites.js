@@ -7,7 +7,7 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
   if (favoriteCountDowns[i].songName.includes('music.mp3/teamWork.mp3')) favoriteCountDowns[i].songName = "Team Work"
   if (favoriteCountDowns[i].songName.includes('music.mp3/dragonForce.mp3')) favoriteCountDowns[i].songName = "Dragon Force"
 
-  let newBtn = '<button id="newBtn">' + '<span>'+ favoriteCountDowns[i].songName + " Second: " + favoriteCountDowns[i].sec + " Minute: " + favoriteCountDowns[i].min + " Hour: " + favoriteCountDowns[i].hour + '</span>' + "</button>" + "<br>";
+  let newBtn = '<button class="button">' + '<span>'+ favoriteCountDowns[i].songName + " Second: " + favoriteCountDowns[i].sec + " Minute: " + favoriteCountDowns[i].min + " Hour: " + favoriteCountDowns[i].hour + '</span>' + "</button>" + "<br>";
 
   favoriteBtns.push(newBtn)
   document.querySelector("#demo").innerHTML = favoriteBtns;
@@ -18,8 +18,11 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
 
 //how to link favorite buttons to the new countdown page
 
+let buttons = document.querySelectorAll('.button')
+let favClick = function(event) {
+  alert ("yes")
+}
 
-
-newBtn.onclick = function() {
-  alert("it works")
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener("click", favClick)
 }
