@@ -135,15 +135,28 @@ function compareObj(objA, objB) {
     objA.min === objB.min &&
     objA.hour === objB.hour
 }
+function highlight() {
+  favorite.style.color = "yellow"
+}
+function verifyFav(newSong, songArray) {
+  for (let i = 0; i < songArray.length; i++) {
+    if (compareObj(newSong, songArray[i])) {
+      return "song not added"
+    }
+  }
+  highlight()
+  return songArray.push(newSong)
 
+}
+
+
+let favorite = document.querySelector("#favorite")
+let favSongSrc = document.querySelector('#tracks').src
+let favTimeHours = document.querySelector(".hours").innerHTML
+let favTimeMins = document.querySelector(".minutes").innerHTML
+let favTimeSec = document.querySelector(".seconds").innerHTML
 
 favorite.addEventListener("click", function(event) {
-  let favorite = document.querySelector("#favorite")
-
-  let favSongSrc = document.querySelector('#tracks').src
-  let favTimeHours = document.querySelector(".hours").innerHTML
-  let favTimeMins = document.querySelector(".minutes").innerHTML
-  let favTimeSec = document.querySelector(".seconds").innerHTML
 
   let localList = localStorage.getItem('favorites')
   let songs = JSON.parse(localList)
@@ -156,14 +169,17 @@ favorite.addEventListener("click", function(event) {
     min: favTimeMins,
     hour: favTimeHours
   }
-  if (songs.length === 0) {
+
+  sLength = songs.length
+
+
+  if (sLength === 0) {
+    highlight()
     songs.push(song)
-  } else if (songs.length > 0) {
-    for (let i = songs.length - 1; i >= 0; i = i - 2) {
-      if (!compareObj(song, songs[i])) {
-        songs.push(song)
-      }
-    }
+  } else if (sLength > 0) {
+    verifyFav(song, songs);
   }
+
+
   localStorage.setItem('favorites', JSON.stringify(songs))
 })

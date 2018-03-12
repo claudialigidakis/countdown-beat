@@ -48,6 +48,14 @@ input {
   padding: 1rem;
 }
 
+/*.btn#favorite {
+	color: yellow;
+}
+.btn#favorite:hover {
+  background: #CCC;
+  color: red;
+}*/
+
 .btn {
   background: lightgrey;
   color: white;
