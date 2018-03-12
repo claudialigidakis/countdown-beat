@@ -40,7 +40,6 @@
 
   if (timeObj['genre'] === 'random') {
     shuffle(musicSrc)
-    console.log(musicSrc)
     document.querySelector('#tracks').src = musicSrc[0]
   }
 
@@ -129,35 +128,42 @@ clear.addEventListener("click", function(event) {
 
 
 //local storage for favorites
-let favorite = document.querySelector("#favorite")
 
-let favSongSrc = document.querySelector('#tracks').src
-let favTimeHours = document.querySelector(".hours").innerHTML
-let favTimeMins = document.querySelector(".minutes").innerHTML
-let favTimeSec = document.querySelector(".seconds").innerHTML
-let favCheck = [favSongSrc, favTimeHours, favTimeMins, favTimeSec]
+function compareObj(objA, objB) {
+  return objA.songName === objB.songName &&
+    objA.sec === objB.sec &&
+    objA.min === objB.min &&
+    objA.hour === objB.hour
+}
+
 
 favorite.addEventListener("click", function(event) {
-    let localList = localStorage.getItem('favorites')
-    let songs = JSON.parse(localList)
-    if (songs == null) {
-      songs = []
-    }
-    let song = {
-      songName: favSongSrc,
-      sec: favTimeSec,
-      min: favTimeMins,
-      hour: favTimeHours
-    }
+  let favorite = document.querySelector("#favorite")
 
-    for (let i = 0; i <= songs.length; i++) {
-      if (songs.length == undefined) songs.length = 0;
-      console.log(songs.legnth)
-    //   if (song == songs[i]) {
-    //     console.log(song, songs)
-    //     console.log("new")
-    //   // songs.push(song)
-    // }
+  let favSongSrc = document.querySelector('#tracks').src
+  let favTimeHours = document.querySelector(".hours").innerHTML
+  let favTimeMins = document.querySelector(".minutes").innerHTML
+  let favTimeSec = document.querySelector(".seconds").innerHTML
+
+  let localList = localStorage.getItem('favorites')
+  let songs = JSON.parse(localList)
+  if (songs == null) {
+    songs = []
+  }
+  let song = {
+    songName: favSongSrc,
+    sec: favTimeSec,
+    min: favTimeMins,
+    hour: favTimeHours
+  }
+  if (songs.length === 0) {
+    songs.push(song)
+  } else if (songs.length > 0) {
+    for (let i = songs.length - 1; i >= 0; i = i - 2) {
+      if (!compareObj(song, songs[i])) {
+        songs.push(song)
+      }
     }
-    localStorage.setItem('favorites', JSON.stringify(songs))
+  }
+  localStorage.setItem('favorites', JSON.stringify(songs))
 })
