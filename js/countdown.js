@@ -124,3 +124,40 @@ clear.addEventListener("click", function(event) {
   document.querySelector(".minutes").innerHTML = 0;
   document.querySelector(".seconds").innerHTML = 0;
 })
+
+
+
+
+//local storage for favorites
+let favorite = document.querySelector("#favorite")
+
+let favSongSrc = document.querySelector('#tracks').src
+let favTimeHours = document.querySelector(".hours").innerHTML
+let favTimeMins = document.querySelector(".minutes").innerHTML
+let favTimeSec = document.querySelector(".seconds").innerHTML
+let favCheck = [favSongSrc, favTimeHours, favTimeMins, favTimeSec]
+
+favorite.addEventListener("click", function(event) {
+    let localList = localStorage.getItem('favorites')
+    let songs = JSON.parse(localList)
+    if (songs == null) {
+      songs = []
+    }
+    let song = {
+      songName: favSongSrc,
+      sec: favTimeSec,
+      min: favTimeMins,
+      hour: favTimeHours
+    }
+
+    for (let i = 0; i <= songs.length; i++) {
+      if (songs.length == undefined) songs.length = 0;
+      console.log(songs.legnth)
+    //   if (song == songs[i]) {
+    //     console.log(song, songs)
+    //     console.log("new")
+    //   // songs.push(song)
+    // }
+    }
+    localStorage.setItem('favorites', JSON.stringify(songs))
+})
