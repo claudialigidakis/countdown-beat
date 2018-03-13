@@ -68,20 +68,20 @@ function getNewTitle() {
   }
   else if (NewTitle === '') {
     alert("Need to enter a valid title")
-    NewTitle = undefined
+  return NewTitle = 'undefined'
   }
 }
 
 let newBtnTitle = document.querySelectorAll('.fa-edit')
 for (let i = 0; i < newBtnTitle.length; i++) {
   newBtnTitle[i].addEventListener("click", function() {
-    buttons[i].innerHTML = getNewTitle()
-    if (buttons[i].innerHTML !== 'undefined') {
-    btnContent = buttons[i].innerHTML
+    btnContent = getNewTitle()
+    if (btnContent != 'undefined') {
+    buttons[i].innerHTML = btnContent
     favoriteCountDowns[i]["newBtnTitle"] = btnContent;
     localStorage.setItem('favorites', JSON.stringify(favoriteCountDowns))
 } else {
-  buttons[i].innerHTML = favoriteCountDowns[i].newBtnTitle
+  return buttons[i].innerHTML
 }
 })
 }
