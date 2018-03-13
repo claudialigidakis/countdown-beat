@@ -56,7 +56,6 @@
   }
 
 })();
-
 var timer;
 
 function settimer() {
@@ -130,7 +129,7 @@ clear.addEventListener("click", function(event) {
 //local storage for favorites
 
 function compareObj(objA, objB) {
-  return objA.songName === objB.songName &&
+  return objA.songName.includes(objB.songName) &&
     objA.sec === objB.sec &&
     objA.min === objB.min &&
     objA.hour === objB.hour
@@ -175,6 +174,7 @@ favorite.addEventListener("click", function(event) {
     highlight()
     songs.push(song)
   } else if (sLength > 0) {
+    console.log(song,songs)
     highlight()
     verifyFav(song, songs);
   }

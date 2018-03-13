@@ -38,7 +38,7 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
 //how to edit button names
 
 function getNewTitle() {
-  var NewTitle = prompt("Please enter the new title", "CountDown Playlist");
+  var NewTitle = prompt("Please enter the new title");
   if (NewTitle != null) {
     return NewTitle
   }
