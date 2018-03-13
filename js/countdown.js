@@ -22,7 +22,7 @@
     document.querySelector(".seconds").innerHTML = 0;
   }
 
-  let musicSrc = ['music.mp3/weAreTheChampions.mp3', 'music.mp3/longWayToTheTop.mp3', 'music.mp3/itTakesTwo.mp3', 'music.mp3/turnDownForWhat.mp3', 'music.mp3/eyeOfTheTiger.mp3', 'music.mp3/dragonForce.mp3', 'music.mp3/finalCountdown.mp3', 'music.mp3/teamWork.mp3']
+  let musicSrc = ['music.mp3/underPressure.mp3', 'music.mp3/weAreTheChampions.mp3', 'music.mp3/longWayToTheTop.mp3', 'music.mp3/itTakesTwo.mp3', 'music.mp3/turnDownForWhat.mp3', 'music.mp3/eyeOfTheTiger.mp3', 'music.mp3/dragonForce.mp3', 'music.mp3/finalCountdown.mp3', 'music.mp3/teamWork.mp3']
 
   function shuffle(Src) {
     var currentIndex = Src.length,
@@ -46,6 +46,9 @@
   if (timeObj['genre'] === 'finalCountdown') {
     document.querySelector('#tracks').src = "music.mp3/finalCountdown.mp3"
   }
+  if (timeObj['genre'] === 'underPressure') {
+    document.querySelector('#tracks').src = "music.mp3/underPressure.mp3"
+  }
   if (timeObj['genre'] === 'longWayToTheTop') {
     document.querySelector('#tracks').src = "music.mp3/longWayToTheTop.mp3"
   }
@@ -66,8 +69,8 @@
   if (timeObj['genre'] === 'dragonForce') {
     document.querySelector('#tracks').src = "music.mp3/dragonForce.mp3"
   }
-  if (timeObj['genre'] === 'weAreTheChamptions') {
-    document.querySelector('#tracks').src = "music.mp3/weAreTheChamptions.mp3"
+  if (timeObj['genre'] === 'weAreTheChampions') {
+    document.querySelector('#tracks').src = "music.mp3/weAreTheChampions.mp3"
   }
 
 })();

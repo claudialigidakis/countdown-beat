@@ -11,6 +11,10 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
     title = "Final Countdown"
     favoriteCountDowns[i].songName = 'finalCountdown'
   }
+  if (favoriteCountDowns[i].songName.includes('underPressure')) {
+    title = "Under Pressure"
+    favoriteCountDowns[i].songName = 'underPressure'
+  }
   if (favoriteCountDowns[i].songName.includes('longWayToTheTop')) {
     title = "Long Way To The Top"
     favoriteCountDowns[i].songName = 'longWayToTheTop'
@@ -19,9 +23,9 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
     title = "Eye of the Tiger"
     favoriteCountDowns[i].songName = 'eyeOfTheTiger'
   }
-  if (favoriteCountDowns[i].songName.includes('weAreTheChamptions')) {
+  if (favoriteCountDowns[i].songName.includes('weAreTheChampions')) {
     title = "We Are The Champions"
-    favoriteCountDowns[i].songName = 'eyeOfTheTiger'
+    favoriteCountDowns[i].songName = 'weAreTheChampions'
   }
   if (favoriteCountDowns[i].songName.includes('teamWork')) {
     title = "Team Work"
@@ -33,7 +37,7 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
   }
   if (favoriteCountDowns[i].songName.includes('itTakesTwo')) {
     title = "It Takes Two"
-    favoriteCountDowns[i].songName = 'turnDownForWhat'
+    favoriteCountDowns[i].songName = 'itTakesTwo'
   }
   if (favoriteCountDowns[i].songName.includes('dragonForce')) {
     title = "Dragon Force"
