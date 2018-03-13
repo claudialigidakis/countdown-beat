@@ -11,9 +11,21 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
     title = "Final Countdown"
     favoriteCountDowns[i].songName = 'finalCountdown'
   }
+  if (favoriteCountDowns[i].songName.includes('eyeOfTheTiger')) {
+    title = "Eye of the Tiger"
+    favoriteCountDowns[i].songName = 'eyeOfTheTiger'
+  }
   if (favoriteCountDowns[i].songName.includes('teamWork')) {
     title = "Team Work"
     favoriteCountDowns[i].songName = 'teamWork'
+  }
+  if (favoriteCountDowns[i].songName.includes('turnDownForWhat')) {
+    title = "Turn Down For What"
+    favoriteCountDowns[i].songName = 'turnDownForWhat'
+  }
+  if (favoriteCountDowns[i].songName.includes('itTakesTwo')) {
+    title = "It Takes Two"
+    favoriteCountDowns[i].songName = 'turnDownForWhat'
   }
   if (favoriteCountDowns[i].songName.includes('dragonForce')) {
     title = "Dragon Force"

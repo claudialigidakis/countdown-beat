@@ -22,7 +22,7 @@
     document.querySelector(".seconds").innerHTML = 0;
   }
 
-  let musicSrc = ['music.mp3/dragonForce.mp3', 'music.mp3/finalCountdown.mp3', 'music.mp3/teamWork.mp3']
+  let musicSrc = ['music.mp3/itTakesTwo.mp3', 'music.mp3/turnDownForWhat.mp3', 'music.mp3/eyeOfTheTiger.mp3', 'music.mp3/dragonForce.mp3', 'music.mp3/finalCountdown.mp3', 'music.mp3/teamWork.mp3']
 
   function shuffle(Src) {
     var currentIndex = Src.length,
@@ -45,6 +45,15 @@
 
   if (timeObj['genre'] === 'finalCountdown') {
     document.querySelector('#tracks').src = "music.mp3/finalCountdown.mp3"
+  }
+  if (timeObj['genre'] === 'turnDownForWhat') {
+    document.querySelector('#tracks').src = "music.mp3/turnDownForWhat.mp3"
+  }
+  if (timeObj['genre'] === 'itTakesTwo') {
+    document.querySelector('#tracks').src = "music.mp3/itTakesTwo.mp3"
+  }
+  if (timeObj['genre'] === 'eyeOfTheTiger') {
+    document.querySelector('#tracks').src = "music.mp3/eyeOfTheTiger.mp3"
   }
 
   if (timeObj['genre'] === 'teamWork') {
