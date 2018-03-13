@@ -150,9 +150,11 @@ function verifyFav(newSong, songArray) {
 
 let favorite = document.querySelector("#favorite")
 let favSongSrc = document.querySelector('#tracks').src
+console.log(favSongSrc)
 let favTimeHours = document.querySelector(".hours").innerHTML
 let favTimeMins = document.querySelector(".minutes").innerHTML
 let favTimeSec = document.querySelector(".seconds").innerHTML
+
 
 favorite.addEventListener("click", function(event) {
   let localList = localStorage.getItem('favorites')
