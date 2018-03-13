@@ -1,7 +1,7 @@
 let favoriteCountDowns = JSON.parse(localStorage.getItem('favorites'));
 
 let favoriteBtns = []
-
+let btnContent;
 for (let i = 0; i < favoriteCountDowns.length; i++) {
   let title;
   if (favoriteCountDowns[i].songName.includes('finalCountdown.mp3')) {
@@ -16,13 +16,28 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
     title = "Dragon Force"
     favoriteCountDowns[i].songName = 'dragonForce'
 }
-  let newBtn = '<button class="button">' + '<span>' + title + " Second: " + favoriteCountDowns[i].sec + " Minute: " + favoriteCountDowns[i].min + " Hour: " + favoriteCountDowns[i].hour + '</span>' + "</button>" + "<br>";
+  btnContent = title + " Second: " + favoriteCountDowns[i].sec + " Minute: " + favoriteCountDowns[i].min + " Hour: " + favoriteCountDowns[i].hour;
+  let newBtn = '<button class="button">' + '<span>' + btnContent+ '</span>' + '</button>' + '<button class="btn">' + '<i class="fa fa-edit">' + '</i>' + '</button>' +  '<br>';
 
   favoriteBtns.push(newBtn)
   document.querySelector("#demo").innerHTML = favoriteBtns.join(" ");
 }
 
+//how to edit button names
 
+function getNewTitle() {
+    var NewTitle = prompt("Please enter the new title", "CountDown Playlist");
+    if (NewTitle != null) {
+        return NewTitle
+    }
+}
+
+let newBtnTitle = document.querySelectorAll('.btn')
+for (let i=0; i < newBtnTitle.length; i++) {
+  newBtnTitle[i].addEventListener("click", function(){
+    buttons[i].innerHTML = getNewTitle()
+  })
+}
 
 
 //how to link favorite buttons to the new countdown page
