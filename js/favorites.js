@@ -1,23 +1,35 @@
 let favoriteCountDowns = JSON.parse(localStorage.getItem('favorites'));
 
+
+//how to populate favorites
 let favoriteBtns = []
 let btnContent;
 for (let i = 0; i < favoriteCountDowns.length; i++) {
   let title;
-  if (favoriteCountDowns[i].songName.includes('finalCountdown.mp3')) {
+  //renaming song titles
+  if (favoriteCountDowns[i].songName.includes('finalCountdown')) {
     title = "Final Countdown"
     favoriteCountDowns[i].songName = 'finalCountdown'
   }
-  if (favoriteCountDowns[i].songName.includes('teamWork.mp3')) {
+  if (favoriteCountDowns[i].songName.includes('teamWork')) {
     title = "Team Work"
     favoriteCountDowns[i].songName = 'teamWork'
   }
-  if (favoriteCountDowns[i].songName.includes('dragonForce.mp3')) {
+  if (favoriteCountDowns[i].songName.includes('dragonForce')) {
     title = "Dragon Force"
     favoriteCountDowns[i].songName = 'dragonForce'
-}
-  btnContent = title + " Second: " + favoriteCountDowns[i].sec + " Minute: " + favoriteCountDowns[i].min + " Hour: " + favoriteCountDowns[i].hour;
-  let newBtn = '<button class="button">' + '<span>' + btnContent+ '</span>' + '</button>' + '<button class="btn">' + '<i class="fa fa-edit">' + '</i>' + '</button>' +  '<br>';
+  }
+
+  //updating custom title
+  if (!favoriteCountDowns[i].newBtnTitle) {
+    btnContent = title + " Second: " + favoriteCountDowns[i].sec + " Minute: " + favoriteCountDowns[i].min + " Hour: " + favoriteCountDowns[i].hour;
+  } else {
+    btnContent = favoriteCountDowns[i].newBtnTitle
+  }
+
+  //adding new buttons
+
+  let newBtn = '<button class="button">' + '<span>' + btnContent + '</span>' + '</button>' + '<button class="btn">' + '<i class="fa fa-edit">' + '</i>' + '</button>' + '<button class="btn">' + '<i class="fa fa-remove">' + '</i>' + '</button>' + '<br>';
 
   favoriteBtns.push(newBtn)
   document.querySelector("#demo").innerHTML = favoriteBtns.join(" ");
@@ -26,18 +38,36 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
 //how to edit button names
 
 function getNewTitle() {
-    var NewTitle = prompt("Please enter the new title", "CountDown Playlist");
-    if (NewTitle != null) {
-        return NewTitle
-    }
+  var NewTitle = prompt("Please enter the new title", "CountDown Playlist");
+  if (NewTitle != null) {
+    return NewTitle
+  }
 }
 
-let newBtnTitle = document.querySelectorAll('.btn')
-for (let i=0; i < newBtnTitle.length; i++) {
-  newBtnTitle[i].addEventListener("click", function(){
+let newBtnTitle = document.querySelectorAll('.fa-edit')
+for (let i = 0; i < newBtnTitle.length; i++) {
+  newBtnTitle[i].addEventListener("click", function() {
     buttons[i].innerHTML = getNewTitle()
+    btnContent = buttons[i].innerHTML
+
+    favoriteCountDowns[i]["newBtnTitle"] = btnContent;
+    localStorage.setItem('favorites', JSON.stringify(favoriteCountDowns))
   })
 }
+
+//removing button
+let removeFavorite = document.querySelectorAll('.fa-remove')
+for (let i = 0; i < removeFavorite.length; i++) {
+  removeFavorite[i].addEventListener("click", function() {
+    let localList = localStorage.getItem('favorites')
+    favoriteCountDowns = JSON.parse(localList)
+    favoriteCountDowns.splice(i, 1)
+    localStorage.setItem('favorites', JSON.stringify(favoriteCountDowns))
+    location.reload();
+  })
+}
+
+
 
 
 //how to link favorite buttons to the new countdown page
