@@ -63,8 +63,13 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
 
 function getNewTitle() {
   var NewTitle = prompt("Please enter the new title");
-  if (NewTitle != null) {
+  if (NewTitle !== '') {
+    console.log(NewTitle)
     return NewTitle
+  }
+  else if (NewTitle === '') {
+    alert("Need to enter a valid title")
+    return
   }
 }
 
@@ -73,10 +78,9 @@ for (let i = 0; i < newBtnTitle.length; i++) {
   newBtnTitle[i].addEventListener("click", function() {
     buttons[i].innerHTML = getNewTitle()
     btnContent = buttons[i].innerHTML
-
     favoriteCountDowns[i]["newBtnTitle"] = btnContent;
     localStorage.setItem('favorites', JSON.stringify(favoriteCountDowns))
-  })
+})
 }
 
 //removing button
