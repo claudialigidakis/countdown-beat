@@ -64,12 +64,11 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
 function getNewTitle() {
   var NewTitle = prompt("Please enter the new title");
   if (NewTitle !== '') {
-    console.log(NewTitle)
     return NewTitle
   }
   else if (NewTitle === '') {
     alert("Need to enter a valid title")
-    return
+    NewTitle = undefined
   }
 }
 
@@ -77,9 +76,13 @@ let newBtnTitle = document.querySelectorAll('.fa-edit')
 for (let i = 0; i < newBtnTitle.length; i++) {
   newBtnTitle[i].addEventListener("click", function() {
     buttons[i].innerHTML = getNewTitle()
+    if (buttons[i].innerHTML !== 'undefined') {
     btnContent = buttons[i].innerHTML
     favoriteCountDowns[i]["newBtnTitle"] = btnContent;
     localStorage.setItem('favorites', JSON.stringify(favoriteCountDowns))
+} else {
+  buttons[i].innerHTML = favoriteCountDowns[i].newBtnTitle
+}
 })
 }
 
