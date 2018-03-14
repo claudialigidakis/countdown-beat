@@ -46,7 +46,7 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
 
   //updating custom title
   if (!favoriteCountDowns[i].newBtnTitle) {
-    btnContent = title + " Second: " + favoriteCountDowns[i].sec + " Minute: " + favoriteCountDowns[i].min + " Hour: " + favoriteCountDowns[i].hour;
+    btnContent = title + " Hour: " + favoriteCountDowns[i].hour + " Minute: " + favoriteCountDowns[i].min + " Second: " + favoriteCountDowns[i].sec;
   } else {
     btnContent = favoriteCountDowns[i].newBtnTitle
   }
@@ -61,18 +61,19 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
 
 //how to edit button names
 
-function getNewTitle() {
+function getNewTitle(button, i) {
   $('#basicModal').modal();
-  let submit = document.querySelector('#submit')
-  submit.addEventListener("click", function(event) {
+  let form = document.querySelector('#formInput')
+  form.addEventListener("submit", function(event) {
+    event.preventDefault()
     let NewTitle = document.querySelector('#submitTitle').value
     if (NewTitle !== '' || NewTitle !== undefined || NewTitle !== 'undefined') {
-      console.log(NewTitle)
-      return NewTitle
+      button.innerHTML = NewTitle
+      favoriteCountDowns[i]["newBtnTitle"] = NewTitle;
+      localStorage.setItem('favorites', JSON.stringify(favoriteCountDowns))
     } else if (NewTitle == '' || NewTitle == undefined || NewTitle == 'undefined') {
-      console.log(NewTitle)
       alert("Need to enter a valid title")
-      return NewTitle = 'undefined'
+      return buttons[i].innerHTML
     }
   })
 }
@@ -80,16 +81,7 @@ function getNewTitle() {
 let newBtnTitle = document.querySelectorAll('.fa-edit')
 for (let i = 0; i < newBtnTitle.length; i++) {
   newBtnTitle[i].addEventListener("click", function() {
-    btnContent = getNewTitle()
-    if (btnContent !== 'undefined' || btnContent !== undefined) {
-      console.log(btnContent)
-      buttons[i].innerHTML = btnContent
-      favoriteCountDowns[i]["newBtnTitle"] = btnContent;
-      localStorage.setItem('favorites', JSON.stringify(favoriteCountDowns))
-    } else {
-      console.log(btnContent)
-      return buttons[i].innerHTML
-    }
+    getNewTitle(buttons[i], i)
   })
 }
 

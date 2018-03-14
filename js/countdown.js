@@ -183,11 +183,11 @@ let favSongSrc = document.querySelector('#tracks').src
 let favTimeHours = document.querySelector(".hours").innerHTML
 let favTimeMins = document.querySelector(".minutes").innerHTML
 let favTimeSec = document.querySelector(".seconds").innerHTML
-
+let localList = localStorage.getItem('favorites')
+let songs = JSON.parse(localList)
 
 favorite.addEventListener("click", function(event) {
-  let localList = localStorage.getItem('favorites')
-  let songs = JSON.parse(localList)
+
   if (songs == null) {
     songs = []
   }

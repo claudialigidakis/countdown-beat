@@ -12,6 +12,7 @@ h1 {
 }
 
 .buttons {
+  color: white;
   background-color: lightgrey;
   border: white solid;
   padding: 15px 32px;
