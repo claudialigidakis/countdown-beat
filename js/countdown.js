@@ -4,19 +4,19 @@
     acc[ele[0]] = ele[1]
     return acc
   }, {})
-  if (timeObj['h'] && 0 <= timeObj['h'] && timeObj['h'] <= 3) {
+  if (timeObj['h'] && 0 <= timeObj['h'] && timeObj['h'] <= 5) {
     document.querySelector(".hours").innerHTML = timeObj.h;
   } else {
     document.querySelector(".hours").innerHTML = 0;
   }
 
-  if (timeObj['m'] && 0 <= timeObj['m'] && timeObj['m'] <= 60) {
+  if (timeObj['m'] && 0 <= timeObj['m'] && timeObj['m'] <= 100) {
     document.querySelector(".minutes").innerHTML = timeObj.m;
   } else {
     document.querySelector(".minutes").innerHTML = 0;
   }
 
-  if (timeObj['s'] && 0 <= timeObj['s'] && timeObj['s'] <= 60) {
+  if (timeObj['s'] && 0 <= timeObj['s'] && timeObj['s'] <= 100) {
     document.querySelector(".seconds").innerHTML = timeObj.s;
   } else {
     document.querySelector(".seconds").innerHTML = 0;
