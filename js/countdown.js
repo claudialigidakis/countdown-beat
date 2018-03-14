@@ -37,12 +37,17 @@
     return Src;
   }
 
+  function playAll(Src) {
+    shuffle(Src)
+    return Src.splice(0, 1)
+  }
+
+
 
   if (timeObj['genre'] === 'random') {
     shuffle(musicSrc)
     document.querySelector('#tracks').src = musicSrc[0]
   }
-
   if (timeObj['genre'] === 'finalCountdown') {
     document.querySelector('#tracks').src = "music.mp3/finalCountdown.mp3"
   }
@@ -73,7 +78,13 @@
     document.querySelector('#tracks').src = "music.mp3/weAreTheChampions.mp3"
   }
 
+  if (timeObj['genre'] === 'allSongs') {
+    playAll(musicSrc)
+    document.querySelector('#tracks').src = musicSrc[0]
+  }
+
 })();
+
 var timer;
 
 function settimer() {
@@ -152,13 +163,15 @@ function compareObj(objA, objB) {
     objA.min === objB.min &&
     objA.hour === objB.hour
 }
+
 function highlight() {
   favorite.style.color = "yellow"
 }
+
 function verifyFav(newSong, songArray) {
   for (let i = 0; i < songArray.length; i++) {
     if (compareObj(newSong, songArray[i])) {
-      return alert ("Song already added to favorites")
+      return alert("Song already added to favorites")
     }
   }
   return songArray.push(newSong)
@@ -167,7 +180,6 @@ function verifyFav(newSong, songArray) {
 
 let favorite = document.querySelector("#favorite")
 let favSongSrc = document.querySelector('#tracks').src
-console.log(favSongSrc)
 let favTimeHours = document.querySelector(".hours").innerHTML
 let favTimeMins = document.querySelector(".minutes").innerHTML
 let favTimeSec = document.querySelector(".seconds").innerHTML
@@ -192,7 +204,6 @@ favorite.addEventListener("click", function(event) {
     highlight()
     songs.push(song)
   } else if (sLength > 0) {
-    console.log(song,songs)
     highlight()
     verifyFav(song, songs);
   }

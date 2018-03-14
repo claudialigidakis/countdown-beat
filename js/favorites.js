@@ -62,28 +62,35 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
 //how to edit button names
 
 function getNewTitle() {
-  var NewTitle = prompt("Please enter the new title");
-  if (NewTitle !== '') {
-    return NewTitle
-  }
-  else if (NewTitle === '') {
-    alert("Need to enter a valid title")
-  return NewTitle = 'undefined'
-  }
+  $('#basicModal').modal();
+  let submit = document.querySelector('#submit')
+  submit.addEventListener("click", function(event) {
+    let NewTitle = document.querySelector('#submitTitle').value
+    if (NewTitle !== '' || NewTitle !== undefined || NewTitle !== 'undefined') {
+      console.log(NewTitle)
+      return NewTitle
+    } else if (NewTitle == '' || NewTitle == undefined || NewTitle == 'undefined') {
+      console.log(NewTitle)
+      alert("Need to enter a valid title")
+      return NewTitle = 'undefined'
+    }
+  })
 }
 
 let newBtnTitle = document.querySelectorAll('.fa-edit')
 for (let i = 0; i < newBtnTitle.length; i++) {
   newBtnTitle[i].addEventListener("click", function() {
     btnContent = getNewTitle()
-    if (btnContent != 'undefined') {
-    buttons[i].innerHTML = btnContent
-    favoriteCountDowns[i]["newBtnTitle"] = btnContent;
-    localStorage.setItem('favorites', JSON.stringify(favoriteCountDowns))
-} else {
-  return buttons[i].innerHTML
-}
-})
+    if (btnContent !== 'undefined' || btnContent !== undefined) {
+      console.log(btnContent)
+      buttons[i].innerHTML = btnContent
+      favoriteCountDowns[i]["newBtnTitle"] = btnContent;
+      localStorage.setItem('favorites', JSON.stringify(favoriteCountDowns))
+    } else {
+      console.log(btnContent)
+      return buttons[i].innerHTML
+    }
+  })
 }
 
 //removing button
