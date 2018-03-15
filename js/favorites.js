@@ -77,10 +77,8 @@ function getNewTitle() {
   form.addEventListener("submit", function(event) {
     event.preventDefault()
     let NewTitle = document.querySelector('#submitTitle').value
-    console.log(NewTitle)
     if (NewTitle !== '' && NewTitle !== undefined && NewTitle !== 'undefined') {
       selected[0].innerHTML = NewTitle
-      console.log(selected[0], selected[1])
       favoriteCountDowns[selected[1]]["newBtnTitle"] = NewTitle;
       localStorage.setItem('favorites', JSON.stringify(favoriteCountDowns))
       $('#basicModal').modal('hide');

@@ -4,7 +4,7 @@
     acc[ele[0]] = ele[1]
     return acc
   }, {})
-  if (timeObj['h'] && 0 <= timeObj['h'] && timeObj['h'] <= 5) {
+  if (timeObj['h'] && 0 <= timeObj['h'] && timeObj['h'] <= 25) {
     document.querySelector(".hours").innerHTML = timeObj.h;
   } else {
     document.querySelector(".hours").innerHTML = 0;
@@ -125,6 +125,7 @@ function settimer() {
 let stop = document.querySelector('#stop');
 let clear = document.querySelector('#clear');
 let reset = document.querySelector('#reset');
+// let edit = document.querySelector()
 
 reset.addEventListener("click", function(event) {
   location.reload();
