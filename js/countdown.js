@@ -37,10 +37,6 @@
     return Src;
   }
 
-  function playAll(Src) {
-    shuffle(Src)
-    return Src.splice(0, 1)
-  }
 
 
 
@@ -76,11 +72,6 @@
   }
   if (timeObj['genre'] === 'weAreTheChampions') {
     document.querySelector('#tracks').src = "music.mp3/weAreTheChampions.mp3"
-  }
-
-  if (timeObj['genre'] === 'allSongs') {
-    playAll(musicSrc)
-    document.querySelector('#tracks').src = musicSrc[0]
   }
 
 })();
@@ -174,11 +165,11 @@ function verifyFav(newSong, songArray) {
   for (let i = 0; i < songArray.length; i++) {
     if (compareObj(newSong, songArray[i])) {
       highlight()
-      if (songs[i].newBtnTitle) {
+      if (songs[i].newBtnTitle !== undefined) {
       document.querySelector('#titleClock').innerHTML = songs[i].newBtnTitle + '  <button class="button"><i class="fa fa-edit"></i></button>'
+    }
       return true
     }
-  }
   }
   return songArray.push(newSong)
 }
