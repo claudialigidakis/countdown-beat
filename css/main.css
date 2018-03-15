@@ -1,42 +1,48 @@
-body{
-	text-align: center;
-	background: #ff6666;
+body {
+  text-align: center;
+  background: #ff6666;
   font-family: sans-serif;
   font-weight: 100;
 }
 
-h1{
+h1 {
   color: white;
   font-size: 50px;
-  margin: 40px 0px 20px;
+  margin: 30px 0px 10px;
 }
 
-#clockdiv{
-	font-family: sans-serif;
-	color: white;
-	display: inline-block;
-	text-align: center;
-	font-size: 30px;
+#titleClock {
+  color: yellow;
+  font-size: 30px;
+  margin: 0px 0px 10px;
 }
 
-#clockdiv > div{
-	padding: 10px;
-	border-radius: 3px;
-	background: white;
-	display: inline-block;
+#clockdiv {
+  font-family: sans-serif;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  font-size: 30px;
 }
 
-#clockdiv div > span{
-	padding: 50px;
-	border-radius: 3px;
-	background: lightgray;
-	display: inline-block;
+#clockdiv>div {
+  padding: 10px;
+  border-radius: 3px;
+  background: white;
+  display: inline-block;
 }
 
-.smalltext{
+#clockdiv div>span {
+  padding: 50px;
+  border-radius: 3px;
+  background: lightgray;
+  display: inline-block;
+}
+
+.smalltext {
   color: black;
-	padding-top: 5px;
-	font-size: 20px;
+  padding-top: 5px;
+  font-size: 20px;
 }
 
 input {
@@ -58,6 +64,22 @@ input {
 }
 
 .btn:hover {
+  background: #CCC;
+  color: red;
+}
+
+.button {
+  background: transparent;
+	border: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+  padding: .2rem;
+  transition: 0.3s all linear;
+}
+
+.button:hover {
   background: #CCC;
   color: red;
 }

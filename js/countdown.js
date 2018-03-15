@@ -85,6 +85,8 @@
 
 })();
 
+
+
 var timer;
 
 function settimer() {
@@ -171,8 +173,12 @@ function highlight() {
 function verifyFav(newSong, songArray) {
   for (let i = 0; i < songArray.length; i++) {
     if (compareObj(newSong, songArray[i])) {
-      return alert("Song already added to favorites")
+      highlight()
+      if (songs[i].newBtnTitle) {
+      document.querySelector('#titleClock').innerHTML = songs[i].newBtnTitle + '  <button class="button"><i class="fa fa-edit"></i></button>'
+      return true
     }
+  }
   }
   return songArray.push(newSong)
 }
@@ -185,29 +191,26 @@ let favTimeMins = document.querySelector(".minutes").innerHTML
 let favTimeSec = document.querySelector(".seconds").innerHTML
 let localList = localStorage.getItem('favorites')
 let songs = JSON.parse(localList)
+let song = {
+  songName: favSongSrc,
+  sec: favTimeSec,
+  min: favTimeMins,
+  hour: favTimeHours
+}
+
+verifyFav(song, songs)
 
 favorite.addEventListener("click", function(event) {
-
   if (songs == null) {
     songs = []
   }
-  let song = {
-    songName: favSongSrc,
-    sec: favTimeSec,
-    min: favTimeMins,
-    hour: favTimeHours
-  }
-
   sLength = songs.length
 
   if (sLength === 0) {
     highlight()
     songs.push(song)
   } else if (sLength > 0) {
-    highlight()
     verifyFav(song, songs);
   }
-
-
   localStorage.setItem('favorites', JSON.stringify(songs))
 })

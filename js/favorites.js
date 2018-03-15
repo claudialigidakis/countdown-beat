@@ -60,28 +60,35 @@ for (let i = 0; i < favoriteCountDowns.length; i++) {
 }
 
 //how to edit button names
-
-function getNewTitle(button, i) {
-  $('#basicModal').modal();
-  let form = document.querySelector('#formInput')
-  form.addEventListener("submit", function(event) {
-    event.preventDefault()
-    let NewTitle = document.querySelector('#submitTitle').value
-    if (NewTitle !== '' || NewTitle !== undefined || NewTitle !== 'undefined') {
-      button.innerHTML = NewTitle
-      favoriteCountDowns[i]["newBtnTitle"] = NewTitle;
-      localStorage.setItem('favorites', JSON.stringify(favoriteCountDowns))
-    } else if (NewTitle == '' || NewTitle == undefined || NewTitle == 'undefined') {
-      alert("Need to enter a valid title")
-      return buttons[i].innerHTML
-    }
-  })
-}
+let selected;
 
 let newBtnTitle = document.querySelectorAll('.fa-edit')
 for (let i = 0; i < newBtnTitle.length; i++) {
   newBtnTitle[i].addEventListener("click", function() {
-    getNewTitle(buttons[i], i)
+    selected = [buttons[i], i]
+    $('#basicModal').modal();
+  })
+}
+getNewTitle()
+
+function getNewTitle() {
+
+  let form = document.querySelector('#formInput')
+  form.addEventListener("submit", function(event) {
+    event.preventDefault()
+    let NewTitle = document.querySelector('#submitTitle').value
+    console.log(NewTitle)
+    if (NewTitle !== '' && NewTitle !== undefined && NewTitle !== 'undefined') {
+      selected[0].innerHTML = NewTitle
+      console.log(selected[0], selected[1])
+      favoriteCountDowns[selected[1]]["newBtnTitle"] = NewTitle;
+      localStorage.setItem('favorites', JSON.stringify(favoriteCountDowns))
+      $('#basicModal').modal('hide');
+      document.querySelector('#submitTitle').value = ''
+    } else {
+      alert("Need to enter a valid title")
+      document.querySelector('#submitTitle').value = ''
+    }
   })
 }
 
