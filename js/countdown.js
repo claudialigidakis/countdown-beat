@@ -4,7 +4,7 @@
     acc[ele[0]] = ele[1]
     return acc
   }, {})
-  if (timeObj['h'] && 0 <= timeObj['h'] && timeObj['h'] <= 5) {
+  if (timeObj['h'] && 0 <= timeObj['h'] && timeObj['h'] <= 24) {
     document.querySelector(".hours").innerHTML = timeObj.h;
   } else {
     document.querySelector(".hours").innerHTML = 0;
@@ -36,9 +36,6 @@
     }
     return Src;
   }
-
-
-
 
   if (timeObj['genre'] === 'random') {
     shuffle(musicSrc)
@@ -129,7 +126,7 @@ let reset = document.querySelector('#reset');
 reset.addEventListener("click", function(event) {
   location.reload();
 })
-
+console.log(stop)
 stop.addEventListener("click", function(event) {
   document.querySelector('#tracks').pause();
   clearInterval(timer);
@@ -147,7 +144,6 @@ clear.addEventListener("click", function(event) {
 
 
 
-
 //local storage for favorites
 
 function compareObj(objA, objB) {
@@ -160,14 +156,18 @@ function compareObj(objA, objB) {
 function highlight() {
   favorite.style.color = "yellow"
 }
+let selected;
 
 function verifyFav(newSong, songArray) {
   for (let i = 0; i < songArray.length; i++) {
     if (compareObj(newSong, songArray[i])) {
       highlight()
+      selected = i
       if (songs[i].newBtnTitle !== undefined) {
-      document.querySelector('#titleClock').innerHTML = songs[i].newBtnTitle + '  <button class="button"><i class="fa fa-edit"></i></button>'
-    }
+        document.querySelector('#titleClock').innerHTML = songs[i].newBtnTitle + '  <button id="edit" class="button"><i class="fa fa-edit"></i></button>'
+      } else if (songs [i].newBtnTitle === undefined) {
+        document.querySelector('#titleClock').innerHTML = "Playlist Title" + '<button id="edit" class="button"><i class="fa fa-edit"></i></button>'
+      }
       return true
     }
   }
@@ -202,3 +202,32 @@ favorite.addEventListener("click", function(event) {
   }
   localStorage.setItem('favorites', JSON.stringify(songs))
 })
+
+
+//editing button
+let editTitle = document.querySelector('#edit');
+if (editTitle) {
+  editTitle.addEventListener("click", function(event) {
+    $('#basicModal').modal();
+  })
+}
+
+getNewTitle()
+function getNewTitle() {
+
+  let form = document.querySelector('#formInput')
+  form.addEventListener("submit", function(event) {
+    event.preventDefault()
+    let NewTitle = document.querySelector('#submitTitle').value
+    if (NewTitle !== '' && NewTitle !== undefined && NewTitle !== 'undefined') {
+      document.querySelector('#titleClock').innerHTML = NewTitle + '  <button id="edit" class="button"><i class="fa fa-edit"></i></button>'
+      songs[selected]["newBtnTitle"] = NewTitle;
+      localStorage.setItem('favorites', JSON.stringify(songs))
+      $('#basicModal').modal('hide');
+      document.querySelector('#submitTitle').value = ''
+    } else {
+      alert("Need to enter a valid title")
+      document.querySelector('#submitTitle').value = ''
+    }
+  })
+}
