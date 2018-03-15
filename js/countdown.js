@@ -167,6 +167,7 @@ function verifyFav(newSong, songArray) {
         document.querySelector('#titleClock').innerHTML = songs[i].newBtnTitle + '  <button id="edit" class="button"><i class="fa fa-edit"></i></button>'
       } else if (songs [i].newBtnTitle === undefined) {
         document.querySelector('#titleClock').innerHTML = "Playlist Title" + '<button id="edit" class="button"><i class="fa fa-edit"></i></button>'
+        editTitle()
       }
       return true
     }
@@ -202,16 +203,17 @@ favorite.addEventListener("click", function(event) {
   }
   localStorage.setItem('favorites', JSON.stringify(songs))
 })
-
+editTitle()
 
 //editing button
+function editTitle() {
 let editTitle = document.querySelector('#edit');
 if (editTitle) {
   editTitle.addEventListener("click", function(event) {
     $('#basicModal').modal();
   })
 }
-
+}
 getNewTitle()
 function getNewTitle() {
 
