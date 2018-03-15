@@ -4,7 +4,7 @@
     acc[ele[0]] = ele[1]
     return acc
   }, {})
-  if (timeObj['h'] && 0 <= timeObj['h'] && timeObj['h'] <= 25) {
+  if (timeObj['h'] && 0 <= timeObj['h'] && timeObj['h'] <= 5) {
     document.querySelector(".hours").innerHTML = timeObj.h;
   } else {
     document.querySelector(".hours").innerHTML = 0;
@@ -125,7 +125,6 @@ function settimer() {
 let stop = document.querySelector('#stop');
 let clear = document.querySelector('#clear');
 let reset = document.querySelector('#reset');
-// let edit = document.querySelector()
 
 reset.addEventListener("click", function(event) {
   location.reload();
@@ -182,7 +181,7 @@ let favTimeHours = document.querySelector(".hours").innerHTML
 let favTimeMins = document.querySelector(".minutes").innerHTML
 let favTimeSec = document.querySelector(".seconds").innerHTML
 let localList = localStorage.getItem('favorites')
-let songs = JSON.parse(localList)
+let songs = JSON.parse(localList) || []
 let song = {
   songName: favSongSrc,
   sec: favTimeSec,
@@ -193,9 +192,6 @@ let song = {
 verifyFav(song, songs)
 
 favorite.addEventListener("click", function(event) {
-  if (songs == null) {
-    songs = []
-  }
   sLength = songs.length
 
   if (sLength === 0) {
